@@ -1,0 +1,28 @@
+<html>
+
+<head>
+
+    <title>Star Wars Info Save</title>
+
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.min.js"></script>
+
+    <script src="scripts/client.js"></script>
+    <script src="scripts/controllers/favorites.controller.js"></script>
+    <script src="scripts/controllers/search.controller.js"></script>
+
+</head>
+<body ng-app="swApp">
+
+    <head>
+        <h1>Star Wars App</h1>
+        <nav ng-include="'/views/templates/nav.html'"></nav>
+    </head>
+
+    <main ng-view></main>
+
+
+</body>
+</html>
