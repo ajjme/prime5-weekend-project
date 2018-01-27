@@ -13,6 +13,16 @@ swApp.controller('SearchController', ['$http', function($http) {
     self.optionValue = "people";
     self.searchValue = "luke";
 
+    self.favorite = function(data) {
+        console.log('result', data);
+        $http.post('/favorites', data)
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    };
     self.query = function(category, keywords) {
         const config = { params: { search: keywords } };
         console.log(category, keywords);
