@@ -32,4 +32,29 @@ router.post('/', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    console.log('hit delete route', req.params.id);
+    Person.findByIdAndRemove({'_id': req.params.id}, (error, response) => {
+        if (error) {
+            console.log('error', error);
+        } else {
+            console.log('response', response);
+        }
+    });
+    
+})
+
+router.delete('/', (req, res) => {
+    const data = new Person(req.body);
+    data.save((error, response) => {
+        if (error) {
+            console.log('error', error);
+            res.send(500);
+        } else {
+            console.log('response', response);
+            res.send(response);
+        }
+    });
+});
+
 module.exports = router;
