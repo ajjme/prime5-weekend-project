@@ -10,10 +10,14 @@ swApp.controller('SearchController', ['$http', function($http) {
         { display: 'Vehicles', term: 'vehicles' }
     ];
     self.queryResponse = {};
+    self.optionValue = "people";
+    self.searchValue = "luke";
 
-    self.query = function(name) {
-        if(name) {
-            $http.get('https://swapi.co/api/' + name)
+    self.query = function(category, keywords) {
+        const config = { params: { search: keywords } };
+        console.log(category, keywords);
+        if(category && keywords) {
+            $http.get('https://swapi.co/api/' + category, config)
             .then(response => {
                 self.queryResponse = response.data;
                 console.log('response', self.queryResponse);

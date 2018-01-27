@@ -2,4 +2,7 @@
 <select ng-model="vm.optionValue">
     <option ng-repeat="option in vm.options" value="{{option.term}}">{{option.display}}</option>
 </select>Option Value {{vm.optionValue}}
-<button ng-click="vm.query(vm.optionValue)">Send</button>
+{{vm}}
+<input type="text" placeholder="Keywords" ng-model="vm.searchValue" />
+
+<button ng-click="vm.query(vm.optionValue, vm.searchValue)">Send</button>
