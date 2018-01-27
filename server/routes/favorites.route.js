@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
             res.send(500);
         } else {
             res.send(response);
+            console.log('response', response)
         }
     })
 });
@@ -37,24 +38,14 @@ router.delete('/:id', (req, res) => {
     Person.findByIdAndRemove({'_id': req.params.id}, (error, response) => {
         if (error) {
             console.log('error', error);
+            res.send(500);
         } else {
             console.log('response', response);
+            res.send(201);
         }
     });
     
 })
 
-router.delete('/', (req, res) => {
-    const data = new Person(req.body);
-    data.save((error, response) => {
-        if (error) {
-            console.log('error', error);
-            res.send(500);
-        } else {
-            console.log('response', response);
-            res.send(response);
-        }
-    });
-});
 
 module.exports = router;

@@ -1,3 +1,4 @@
 <h1>Favorites</h1>
 
-<li ng-repeat="favorite in vm.favoritesList"><button ng-click="vm.unfavorite(favorite)">&lt;/3</button> {{favorite._id}}</li>
+<li ng-repeat="favorite in vm.favoritesList.list">
+    <button ng-click="vm.unfavorite(favorite)">&lt;/3</button> {{favorite}}</li>
