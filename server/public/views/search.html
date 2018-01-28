@@ -2,45 +2,45 @@
 
 <div>
     <select ng-model="vm.optionValue">
-        <option ng-repeat="option in vm.options" value="{{option.term}}">{{option.display}}</option>
+        <option ng-repeat="option in vm.favorites" value="{{option.term}}">{{option.display}}</option>
     </select>
     <input type="text" placeholder="Keywords" ng-model="vm.searchValue" />
     <button ng-click="vm.query(vm.optionValue, vm.searchValue)">Send</button>
 </div>
 
-<div id="resultsContainer">
-    <div ng-if="vm.queryResponseType === 'films'" ng-repeat="result in vm.queryResponse.results">
-        <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button>
+<div id="resultsContainer">{{vm.queryResponse.list.results}}
+    <div ng-if="vm.queryResponse.type === 'films'" ng-repeat="result in vm.queryResponse.list.results">
+        <button ng-click="vm.favorite(result, vm.queryResponse.type)">&lt;3</button>
         <p><b>{{result.title}}</b></p>
         <p>Director: {{result.director}}</p>
     </div>
-    <div ng-if="vm.queryResponseType === 'people'" ng-repeat="result in vm.queryResponse.results">
-        <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button>
+    <div ng-if="vm.queryResponse.type === 'people'" ng-repeat="result in vm.queryResponse.list.results">
+        <button ng-click="vm.favorite(result, vm.queryResponse.type)">&lt;3</button>
         <p><b>{{result.name}}</b></p>
         <p>Eye Color: {{result.eye_color}}</p>
         <p>Birth Year: {{result.birth_year}}</p>
     </div>
-    <div ng-if="vm.queryResponseType === 'planets'" ng-repeat="result in vm.queryResponse.results">
-        <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button>
+    <div ng-if="vm.queryResponse.type === 'planets'" ng-repeat="result in vm.queryResponse.list.results">
+        <button ng-click="vm.favorite(result, vm.queryResponse.type)">&lt;3</button>
         <b>{{result.name}}</b></p>
         <p>Climate: {{result.climate}}</p>
         <p>Population: {{result.population}}</p>
     </div>
-    <div ng-if="vm.queryResponseType === 'species'" ng-repeat="result in vm.queryResponse.results">
-        <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button>
+    <div ng-if="vm.queryResponse.type === 'species'" ng-repeat="result in vm.queryResponse.list.results">
+        <button ng-click="vm.favorite(result, vm.queryResponse.type)">&lt;3</button>
         <p><b>{{result.name}}</b></p>
         <p>Classification: {{result.classification}}</p>
         <p>Language: {{result.language}}</p>
     </div>
-    <div ng-if="vm.queryResponseType === 'starships'" ng-repeat="result in vm.queryResponse.results">
-        <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button>
+    <div ng-if="vm.queryResponse.type === 'starships'" ng-repeat="result in vm.queryResponse.list.results">
+        <button ng-click="vm.favorite(result, vm.queryResponse.type)">&lt;3</button>
         <p><b>{{result.name}}</b></p>
         <p>Model: {{result.model}}</p>
         <p>Class: {{result.starship_class}}</p>
         <p>Crew: {{result.crew}}</p>
     </div>
-    <div ng-if="vm.queryResponseType === 'vehicles'" ng-repeat="result in vm.queryResponse.results">
-        <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button>
+    <div ng-if="vm.queryResponse.type === 'vehicles'" ng-repeat="result in vm.queryResponse.list.results">
+        <button ng-click="vm.favorite(result, vm.queryResponse.type)">&lt;3</button>
         <p><b>{{result.name}}</b></p>
         <p>Model: {{result.model}}</p>
         <p>Class: {{result.vehicle_class}}</p>
