@@ -13,7 +13,8 @@ swApp.controller('SearchController', ['$http', function($http) {
     self.optionValue = "people";
     self.searchValue = "luke";
 
-    self.favorite = function(data) {
+    self.favorite = function(data, category) {
+        data.mongoCategory = category;
         console.log('result', data);
         $http.post('/favorites', data)
             .then(function(response) {

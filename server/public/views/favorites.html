@@ -1,4 +1,16 @@
 <h1>Favorites</h1>
-
+<!-- 
 <li ng-repeat="favorite in vm.favoritesList.list">
-    <button ng-click="vm.unfavorite(favorite)">&lt;/3</button> {{favorite}}</li>
+    <button ng-click="vm.unfavorite(favorite)">&lt;/3</button>
+    {{favorite}}
+</li> -->
+
+    <div ng-repeat="group in vm.favorites" class="resultsContainer">
+        <h3>{{group.display}}</h3>
+        <div ng-repeat="item in group.list"> {{item.name}}
+            <button ng-click="vm.unfavorite(group.term, item)">&lt;/3</button>
+            <!-- <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button> -->
+            <p><b>{{result.title}}</b></p>
+            <p>Director: {{result.director}}</p>
+        </div>
+    </div>

@@ -3,25 +3,88 @@ const router = express.Router();
 
 const mongoose = require('mongoose');
 
+
+// Schema
+
+const filmSchema = new mongoose.Schema({
+    title: { type: String, unique: true, required: true}
+});
 const personSchema = new mongoose.Schema({
     name: { type: String, unique: true, required: true}
-})
-const Person = mongoose.model('Person', personSchema);
+});
+const planetSchema = new mongoose.Schema({
+    name: { type: String, unique: true, required: true}
+});
+const speciesSchema = new mongoose.Schema({
+    name: { type: String, unique: true, required: true}
+});
+const starshipSchema = new mongoose.Schema({
+    name: { type: String, unique: true, required: true}
+});
+const vehicleSchema = new mongoose.Schema({
+    name: { type: String, unique: true, required: true}
+});
 
-router.get('/', (req, res) => {
+const Film = mongoose.model('Film', filmSchema);
+const Person = mongoose.model('Person', personSchema);
+const Planet = mongoose.model('Planet', planetSchema);
+const Species = mongoose.model('Species', speciesSchema);
+const Starship = mongoose.model('Starship', starshipSchema);
+const Vehicle = mongoose.model('Vehicle', vehicleSchema);
+
+
+// Routes
+router.get('/:category', (req, res) => {
     console.log('req', req);
-    Person.find({}, (error, response) => {
+
+    const category = req.params.category;
+    
+    function callback(error, response) {
         if (error) {
             res.send(500);
         } else {
             res.send(response);
             console.log('response', response)
         }
-    })
+    }
+
+    // Decide which collection to get data from
+    if (category === 'films') {
+        Film.find({}, callback);
+    } else if (category === 'people') {
+        Person.find({}, callback);
+    } else if (category === 'planets') {
+        Planet.find({}, callback);
+    } else if (category === 'species') {
+        Species.find({}, callback);
+    } else if (category === 'starships') {
+        Starship.find({}, callback);
+    } else if (category === 'vehicles') {
+        Vehicle.find({}, callback);
+    }
 });
 
 router.post('/', (req, res) => {
-    const data = new Person(req.body);
+
+    // Decide what collection to put data in
+    const category = req.body.mongoCategory;
+    let data;
+    if (category === 'films') {
+        data = new Film(req.body);
+    } else if (category === 'people') {
+        data = new Person(req.body);
+    } else if (category === 'planets') {
+        data = new Planet(req.body);
+    } else if (category === 'species') {
+        data = new Species(req.body);
+    } else if (category === 'starships') {
+        data = new Starship(req.body);
+    } else if (category === 'vehicles') {
+        data = new Vehicle(req.body);
+    }
+    console.log(category, data, 'ehere')
+
+    // Save it in the right collection
     data.save((error, response) => {
         if (error) {
             console.log('error', error);
@@ -33,18 +96,36 @@ router.post('/', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:category/:id', (req, res) => {
     console.log('hit delete route', req.params.id);
-    Person.findByIdAndRemove({'_id': req.params.id}, (error, response) => {
+    // Person.findByIdAndRemove({'_id': req.params.id}, (error, response) => {
+    // });
+    const category = req.params.category;
+    
+    function callback(error, response) {
         if (error) {
             console.log('error', error);
             res.send(500);
         } else {
             console.log('response', response);
-            res.send(201);
+            res.send(200);
         }
-    });
-    
+    }
+
+    if (category === 'films') {
+        Film.findByIdAndRemove({'_id': req.params.id}, callback);
+    } else if (category === 'people') {
+        Person.findByIdAndRemove({'_id': req.params.id}, callback);
+    } else if (category === 'planets') {
+        Planet.findByIdAndRemove({'_id': req.params.id}, callback);
+    } else if (category === 'species') {
+        Species.findByIdAndRemove({'_id': req.params.id}, callback);
+    } else if (category === 'starships') {
+        Starship.findByIdAndRemove({'_id': req.params.id}, callback);
+    } else if (category === 'vehicles') {
+        Vehicle.findByIdAndRemove({'_id': req.params.id}, callback);
+    }
+
 })
 
 
