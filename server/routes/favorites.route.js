@@ -7,22 +7,35 @@ const mongoose = require('mongoose');
 // Schema
 
 const filmSchema = new mongoose.Schema({
-    title: { type: String, unique: true, required: true}
+    title: { type: String, unique: true, required: true},
+    director: String
 });
 const personSchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: true}
+    name: { type: String, unique: true, required: true},
+    eye_color: String,
+    birth_year: String
 });
 const planetSchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: true}
+    name: { type: String, unique: true, required: true},
+    climate: String,
+    population: String
 });
 const speciesSchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: true}
+    name: { type: String, unique: true, required: true},
+    classification: String,
+    language: String
 });
 const starshipSchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: true}
+    name: { type: String, unique: true, required: true},
+    model: String,
+    starship_class: String,
+    crew: String
 });
 const vehicleSchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: true}
+    name: { type: String, unique: true, required: true},
+    model: String,
+    vehicle_class: String,
+    crew: String
 });
 
 const Film = mongoose.model('Film', filmSchema);
