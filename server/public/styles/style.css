@@ -1,4 +1,4 @@
-.resultsContainer div { 
+.resultsContainer { 
     float: left; width: 200px; margin: 25px; background: #eee; border: 1px #000 solid;
 }
 h3 { clear: both; }

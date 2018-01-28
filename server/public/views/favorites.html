@@ -1,16 +1,50 @@
 <h1>Favorites</h1>
-<!-- 
-<li ng-repeat="favorite in vm.favoritesList.list">
-    <button ng-click="vm.unfavorite(favorite)">&lt;/3</button>
-    {{favorite}}
-</li> -->
 
-    <div ng-repeat="group in vm.favorites" class="resultsContainer">
-        <h3>{{group.display}}</h3>
-        <div ng-repeat="item in group.list"> {{item.name}}
-            <button ng-click="vm.unfavorite(group.term, item)">&lt;/3</button>
-            <!-- <button ng-click="vm.favorite(result, vm.queryResponseType)">&lt;3</button> -->
-            <p><b>{{result.title}}</b></p>
-            <p>Director: {{result.director}}</p>
-        </div>
-    </div>
+<h3>{{vm.favorites[0].display}}</h3>
+<div class="resultsContainer" ng-repeat="item in vm.favorites[0].list">
+    <button ng-click="vm.unfavorite(vm.favorites[0].term, item)">&lt;/3</button>
+    <p><b>{{result.title}}</b></p>
+    <p>Director: {{result.director}}</p>
+</div>
+
+<h3>{{vm.favorites[1].display}}</h3>
+<div class="resultsContainer" ng-repeat="item in vm.favorites[1].list">
+    <button ng-click="vm.unfavorite(vm.favorites[1].term, item)">&lt;/3</button>
+    <b>{{item.name}}</b></p>
+    <p>Eye Color: {{item.eye_color}}</p>
+    <p>Birth Year: {{item.birth_year}}</p>
+</div>
+
+<h3>{{vm.favorites[2].display}}</h3>
+<div class="resultsContainer" ng-repeat="item in vm.favorites[2].list">
+    <button ng-click="vm.unfavorite(vm.favorites[2].term, item)">&lt;/3</button>
+    <b>{{item.name}}</b></p>
+    <p>Climate: {{item.climate}}</p>
+    <p>Population: {{item.population}}</p>
+</div>
+
+<h3>{{vm.favorites[3].display}}</h3>
+<div class="resultsContainer" ng-repeat="item in vm.favorites[3].list">
+    <button ng-click="vm.unfavorite(vm.favorites[3].term, item)">&lt;/3</button>
+    <p><b>{{item.name}}</b></p>
+    <p>Classification: {{item.classification}}</p>
+    <p>Language: {{item.language}}</p>
+</div>
+
+<h3>{{vm.favorites[4].display}}</h3>
+<div class="resultsContainer" ng-repeat="item in vm.favorites[4].list">
+    <button ng-click="vm.unfavorite(vm.favorites[4].term, item)">&lt;/3</button>
+    <p><b>{{item.name}}</b></p>
+    <p>Model: {{item.model}}</p>
+    <p>Class: {{item.starship_class}}</p>
+    <p>Crew: {{item.crew}}</p>
+</div>
+
+<h3>{{vm.favorites[5].display}}</h3>
+<div class="resultsContainer" ng-repeat="item in vm.favorites[5].list">
+    <button ng-click="vm.unfavorite(vm.favorites[5].term, item)">&lt;/3</button>
+    <p><b>{{item.name}}</b></p>
+    <p>Model: {{item.model}}</p>
+    <p>Class: {{item.vehicle_class}}</p>
+    <p>Crew: {{item.crew}}</p>
+</div>
