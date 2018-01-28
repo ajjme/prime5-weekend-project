@@ -3,8 +3,8 @@
 <h3>{{vm.favorites[0].display}}</h3>
 <div class="resultsContainer" ng-repeat="item in vm.favorites[0].list">
     <button ng-click="vm.unfavorite(vm.favorites[0].term, item)">&lt;/3</button>
-    <p><b>{{result.title}}</b></p>
-    <p>Director: {{result.director}}</p>
+    <p><b>{{item.title}}</b></p>
+    <p>Director: {{item.director}}</p>asdfasdfasdf
 </div>
 
 <h3>{{vm.favorites[1].display}}</h3>

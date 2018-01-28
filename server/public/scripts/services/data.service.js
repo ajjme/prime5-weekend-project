@@ -43,6 +43,17 @@ swApp.service('DataService', ['$http', function($http) {
         }
     };
 
+    self.favorite = function(data, category) {
+        data.mongoCategory = category;
+        console.log('result', data);
+        $http.post('/favorites', data)
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    };
 
     self.unfavorite = function(term, item) {
         console.log(term, item);
