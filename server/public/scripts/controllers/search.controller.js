@@ -1,17 +1,15 @@
-swApp.controller('SearchController', ['$http', function($http) {
+swApp.controller('SearchController', ['$http', 'DataService', function($http, DataService) {
     const self = this;
 
-    self.options = [
-        { display: 'Films', term: 'films' },
-        { display: 'People', term: 'people' },
-        { display: 'Planets', term: 'planets' },
-        { display: 'Species', term: 'species' },
-        { display: 'Starships', term: 'starships' },
-        { display: 'Vehicles', term: 'vehicles' }
-    ];
-    self.queryResponse = {};
+    self.favorites = DataService.favorites;
+    self.queryResponse = DataService.queryResponse;
     self.optionValue = "people";
     self.searchValue = "luke";
+    
+    // Sets default select option
+    self.queryResponseType = DataService.queryResponseType;
+
+    self.favorite = DataService.favorite;
 
     self.favorite = function(data, category) {
         data.mongoCategory = category;
@@ -24,20 +22,7 @@ swApp.controller('SearchController', ['$http', function($http) {
                 console.log(error);
             });
     };
-    self.query = function(category, keywords) {
-        const config = { params: { search: keywords } };
-        console.log(category, keywords);
-        if(category) {
-            $http.get('https://swapi.co/api/' + category, config)
-            .then(response => {
-                self.queryResponseType = category;
-                self.queryResponse = response.data;
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log('error', error);
-            })
-        }
-    };
+    self.query = DataService.query;
+    self.query();
 
 }]);
