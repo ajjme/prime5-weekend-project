@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.use('/favorites', favoritesRouter);
 
-const databaseUrl = 'mongodb://localhost:27017/prime5_weekend_project';
+const databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/prime5_weekend_project';
 mongoose.connect(databaseUrl);
 mongoose.connection.on('connected', () => {
     console.log('connected to mongo');

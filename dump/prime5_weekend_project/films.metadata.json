@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"prime5_weekend_project.films"},{"v":2,"unique":true,"key":{"title":1},"name":"title_1","ns":"prime5_weekend_project.films","background":true},{"v":2,"unique":true,"key":{"director":1},"name":"director_1","ns":"prime5_weekend_project.films","background":true}],"uuid":"a9e4c771887349baa1cca7deb60517b4"}
